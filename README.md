@@ -39,11 +39,20 @@ This is formulated as a **multi-class text classification problem**.
 - JSON files are read from each topic directory
 - The folder name is used as the class label
 
-### 2. Text Preprocessing & Feature Extraction
-- Text data is converted into numerical features using **TF-IDF vectorization**
-- Unigrams and bigrams are used to capture relevant mathematical terms
-- Common English stop words are removed
-- Vocabulary size is limited to 5000 features
+### 2. Feature Extraction
+To effectively represent mathematical text, a **hybrid TF-IDF feature representation** is used:
+
+#### 🔹 Word-level TF-IDF
+- Unigrams and bigrams
+- Captures mathematical terminology and phrases  
+  (e.g., *quadratic equation*, *limit of function*)
+
+#### 🔹 Character-level TF-IDF
+- Character n-grams (length 3 to 5)
+- Captures symbolic patterns such as variables, operators, and short expressions  
+  (e.g., *sin*, *cos*, *x^2*, *dx*)
+
+Both feature types are combined using **FeatureUnion**, allowing the model to leverage both semantic and structural information.
 
 ### 3. Label Encoding
 - Topic labels are converted into numerical form using **Label Encoding**
@@ -53,7 +62,7 @@ This is formulated as a **multi-class text classification problem**.
 - Stratified sampling is used to maintain class distribution
 
 ### 5. Model Training
-- A **Logistic Regression** classifier is trained on the TF-IDF features
+- A **Linear Support Vector Machine (Linear SVM)** classifier is trained on the TF-IDF features
 - The model learns to associate question text patterns with math topics
 
 ---
@@ -61,7 +70,7 @@ This is formulated as a **multi-class text classification problem**.
 ## 📊 Evaluation
 The model is evaluated on the test set using **accuracy** as the primary metric.
 
-**Model Accuracy:** 69%
+**Model Accuracy:** 77%
 
 ---
 
