@@ -11,13 +11,14 @@ The goal of the project is to demonstrate the application of **traditional NLP a
 ## 📂 Dataset Structure
 The dataset is organized in a folder-based labeling format:
 
+```text
 MATH/
 └── test/
-├── algebra/
-├── calculus/
-├── geometry/
-└── probability/
-
+    ├── algebra/
+    ├── calculus/
+    ├── geometry/
+    └── probability/
+```
 
 - Each folder name represents a **topic label**
 - Each JSON file contains a single math question
